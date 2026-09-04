@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EkiSpert Alignment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/style.css?v=2">
+    <script src="/frontend/app.js?v=2" defer></script>
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div class="topbar-text">
+                <h1>EkiSpert Alignment</h1>
+                <p class="subtitle">委員会別の交通経路を表示します。</p>
+            </div>
+            <div class="topbar-actions">
+                <div class="date-control">
+                    <span class="date-label">日付</span>
+                    <div class="date-picker" id="date-picker">
+                        <button type="button" class="date-trigger" id="date-trigger" aria-haspopup="dialog" aria-expanded="false">
+                            <span class="date-trigger-text" id="date-trigger-text">----/--/--</span>
+                            <span class="date-trigger-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="date-calendar" id="date-calendar" role="dialog" hidden>
+                            <div class="calendar-header">
+                                <button type="button" class="calendar-nav" id="cal-prev" aria-label="前の月">‹</button>
+                                <span class="calendar-title" id="cal-title">----年--月</span>
+                                <button type="button" class="calendar-nav" id="cal-next" aria-label="次の月">›</button>
+                            </div>
+                            <div class="calendar-weekdays">
+                                <span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span>
+                            </div>
+                            <div class="calendar-grid" id="cal-grid"></div>
+                        </div>
+                    </div>
+                </div>
+                <button id="ekispert-sync-button" class="ekispert-button" type="button">
+                    駅すぱあと連携
+                </button>
+            </div>
+        </header>
+
+        <section class="workspace">
+            <section class="panel committee-panel" aria-labelledby="committee-title">
+                <div class="panel-head compact">
+                    <div>
+                        <h2 id="committee-title">委員会を選択</h2>
+                        <p class="description">年度ごとに委員会がまとまっています。</p>
+                    </div>
+                </div>
+
+                <div class="committee-list" id="committee-list">
+                    <p class="committee-list-empty" id="committee-list-empty">
+                        委員会を読み込み中...
+                    </p>
+                </div>
+            </section>
+
+            <section class="panel member-panel" aria-labelledby="member-title">
+                <div class="panel-head compact">
+                    <div>
+                        <h2 id="member-title">メンバー情報</h2>
+                        <span id="selected-committee-name" class="selected-name" hidden></span>
+                    </div>
+                </div>
+
+                <div class="member-tabs" id="member-tabs" role="tablist">
+                    <p class="member-empty" id="member-empty">
+                        委員会を選択するとメンバーが表示されます。
+                    </p>
+                </div>
+
+                <div class="member-detail" id="member-detail">
+                    <p class="detail-empty">メンバーを選択してください。</p>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

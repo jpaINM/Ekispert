@@ -1,0 +1,6 @@
+# 秘密情報（バージョン管理対象外）
+python/.env
+
+# Python
+__pycache__/
+*.pyc
