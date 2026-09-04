@@ -94,17 +94,17 @@ def get_committees() -> dict[str, Any]:
 
     try:
         fiscal_years = []
-        for fy in cur.execute("SELECT * FROM fiscal_years ORDER BY start_year"):
+        for fy in cur.execute("SELECT * FROM fiscal_years ORDER BY start_year").fetchall():
             committees = []
             for cm in cur.execute(
                 "SELECT * FROM committees WHERE fiscal_year_id = ? ORDER BY committee_name",
                 (fy["fiscal_year_id"],),
-            ):
+            ).fetchall():
                 members = []
                 for m in cur.execute(
                     "SELECT * FROM committee_members WHERE committee_id = ? ORDER BY member_id",
                     (cm["committee_id"],),
-                ):
+                ).fetchall():
                     via_stations = []
                     for i in range(1, 6):
                         val = m[f"via_station_{i}"]
